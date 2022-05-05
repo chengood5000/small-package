@@ -63,6 +63,17 @@
 ```bash
 git clone https://github.com/kenzok8/small-package package/small-package
 ```
+git clone https://git.openwrt.org/openwrt/openwrt.git
+git tag -l
+git checkout -b openwrt-19.07 origin/openwrt-19.07
+git branch -a
+sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
+sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
+git pull
+./scripts/feeds update -a
+./scripts/feeds install -a
+make menuconfig
+
 
 
 
